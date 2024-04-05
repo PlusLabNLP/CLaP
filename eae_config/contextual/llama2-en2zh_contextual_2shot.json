@@ -1,0 +1,27 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "zh",
+    "task": "eae",
+    "xgear_config": "./eae_config/xgear/config_XGear_EAE_ace05_en_mBART50.jsonnet",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 64,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Chinese Sentence: 康涅狄格州参议员克里斯托弗·多德今天宣布，他不会成为第十位提名候选人。.\nFor the previous sentence, the words corresponding to 'candidate' is: '候选人'\nChinese Sentence: 因为他帮助策划了对世贸中心和五角大楼的袭击？.\nFor the previous sentence, the words corresponding to 'attack' is: '袭击'\n",
+    "prompt": "Chinese Sentence: %s.\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_eae/mmt-zh-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_eae/llama2-mmt_2shot_contextual-zh-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_eae/llama2-mmt_2shot_contextual-zh-translate/",
+    
+    "labels_in_sent": true,
+    "save_source": true
+}
