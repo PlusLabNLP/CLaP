@@ -1,0 +1,21 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "ar",
+    "task": "eae",
+    "xgear_config": "./eae_config/xgear/config_XGear_EAE_ace05_en_mBART50.jsonnet",
+    "split": "train",
+    
+    "model_name": "facebook/mbart-large-50-many-to-many-mmt",
+    "batch_size": 32,
+    "max_length": 350,
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translations_folder": "./data/translated_processed_data_eae/mmt-ar-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_eae/mmt-ar-translate/",
+
+    "labels_in_sent": false,
+    "save_source": true
+}

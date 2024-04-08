@@ -1,0 +1,27 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "ar",
+    "task": "eae",
+    "xgear_config": "./eae_config/xgear/config_XGear_EAE_ace05_en_mBART50.jsonnet",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 64,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Arabic Sentence: أعلن السناتور كريستوفر دود من ولاية كونيتيكت اليوم أنه لن يكون المرشح العاشر للترشيح.\nFor the previous sentence, the words corresponding to 'candidate' is: 'المرشح'\nArabic Sentence: لأنه ساعد في التخطيط للهجوم على مركز التجارة العالمي والبنتاغون؟.\nFor the previous sentence, the words corresponding to 'attack' is: 'هجوم'\n",
+    "prompt": "Arabic Sentence: %s.\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_eae/mmt-ar-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_eae/llama2-mmt_2shot_contextual-ar-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_eae/llama2-mmt_2shot_contextual-ar-translate/",
+    
+    "labels_in_sent": true,
+    "save_source": true
+}

@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "th",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Thai Sentence: ชิงแชมป์OPBFรุ่นเฟเธอร์เวทเมื่อ16กันยายน2549แพ้คะแนนฮิโรยูกิเอโนกิที่โตเกียว\nFor the previous sentence, the words corresponding to 'Hiroyuki Enoki' is: 'ฮิโรยูกิเอโนกิ'\nThai Sentence: '''ทิศใต้'''ติดต่อกับอำเภอแก่งกระจาน\nFor the previous sentence, the words corresponding to 'Kaeng Krachan District' is: 'อำเภอแก่งกระจาน'\n",
+    "prompt": "Thai Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-th-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-th-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-th-translate/",
+    
+    "labels_in_sent": true    
+}

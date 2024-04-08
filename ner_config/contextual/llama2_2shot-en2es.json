@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "es",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Spanish Sentence: Al año siguiente se integra en el filial del Real Valladolid donde permanece dos temporadas .\nFor the previous sentence, the words corresponding to 'Real Valladolid reserve team' is: 'filial del Real Valladolid'\nSpanish Sentence: REDIRECCIÓN Segunda División de España 2006-07\nFor the previous sentence, the words corresponding to 'Second Division of Spain 2006-07' is: 'Segunda División de España 2006-07'\n",
+    "prompt": "Spanish Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-es-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-es-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-es-translate/",
+    
+    "labels_in_sent": true    
+}
