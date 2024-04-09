@@ -80,7 +80,7 @@ For example, for NER in Arabic, you can use
 CUDA_VISIBLE_DEVICES=0,1 python src/contextual_translate.py -c ner_config/contextual/llama2_2shot-en2ar.json
 ```
 
-We provide sample config files for both steps for each task in the `eae_config` and `ner_config` folders respectively. All arguments for the training can be altered from the config file.
+We provide sample config files for both steps for each task in the `eae_config` and `ner_config` folders respectively. All arguments for the training can be altered from the config file. Many languages for NER are not compatible with many-to-many-large-50 translation model, but we include it for reference to use with other translation models.
 
 **Note**: If you plan to use an external MT/LLM system for step 1/2, make sure to adhere to the output file formats for future processing.
 
