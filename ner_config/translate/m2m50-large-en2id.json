@@ -1,0 +1,22 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "id",
+    "task": "ner",
+    "train_file": "./data/train-en.tsv",
+    "split": "train",
+    
+    "model_name": "facebook/mbart-large-50-many-to-many-mmt",
+    "batch_size": 32,
+    "max_input_length": 128,
+    "max_length": 300,
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translations_folder": "./data/translated_processed_data_ner/mmt-id-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/mmt-id-translate/",
+    
+    "labels_in_sent": false,    
+    "save_source": true
+}

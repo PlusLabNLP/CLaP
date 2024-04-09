@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "zh",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Chinese Sentence: 茱蒂·丹契饰M，秘密情报局主管，邦德的顶头上司。\nFor the previous sentence, the words corresponding to 'Judy Dench' is: '茱蒂·丹契'\nChinese Sentence: 1月18日击沉荷兰貨客船1隻。\nFor the previous sentence, the words corresponding to 'Netherlands' is: '荷兰'\n",
+    "prompt": "Chinese Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-zh-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-zh-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-zh-translate/",
+    
+    "labels_in_sent": true    
+}

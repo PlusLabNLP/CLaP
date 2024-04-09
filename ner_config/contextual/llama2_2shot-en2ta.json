@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "ta",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Tamil Sentence: இங்கிருக்கும் அரச மரம் தேவனம்பியதீச மன்னன் காலத்திலேயே அனுராதபுரத்திலிருக்கும் சிறீ மகாபோதியிலிருந்து முதலாவதாகப் பிரித்தெடுத்து நடப்பட்டதாகும் .\nFor the previous sentence, the words corresponding to 'Sri Mahabodhi' is: 'சிறீ மகாபோதியிலிருந்து'\nTamil Sentence: இவரது காலகட்டத்தில் சையத் சகோதரர்களின் பலம் அதிகரித்து வந்தது .\nFor the previous sentence, the words corresponding to 'Syed brothers' is: 'சையத் சகோதரர்களின்'\n",
+    "prompt": "Tamil Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-ta-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ta-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ta-translate/",
+    
+    "labels_in_sent": true    
+}

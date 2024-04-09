@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "mr",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Marathi Sentence: हे एक महाराष्ट्रातील सातारा जिल्ह्यातील गाव आहे .\nFor the previous sentence, the words corresponding to 'Satara district of Maharashtra' is: 'महाराष्ट्रातील सातारा जिल्ह्यातील'\nMarathi Sentence: त्यामुळे नहुषाने चिडून जाउन त्याच्या पुढील अगस्ती ऋषींना पालखी हलवण्यासाठी लाथ मारली .\nFor the previous sentence, the words corresponding to 'Agasti Rishis' is: 'अगस्ती ऋषींना'\n",
+    "prompt": "Marathi Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-mr-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-mr-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-mr-translate/",
+    
+    "labels_in_sent": true    
+}

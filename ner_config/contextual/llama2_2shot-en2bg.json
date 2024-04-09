@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "bg",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Bulgarian Sentence: Видът е разпространен в Бурунди , Демократична република Конго , Замбия и Танзания .\nFor the previous sentence, the words corresponding to 'Democratic Republic of the Congo' is: 'Демократична република Конго'\nBulgarian Sentence: Погребаана е в Берлинската катедрала .\nFor the previous sentence, the words corresponding to 'Berlin Cathedral' is: 'Берлинската катедрала'\n",
+    "prompt": "Bulgarian Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-bg-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-bg-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-bg-translate/",
+    
+    "labels_in_sent": true    
+}

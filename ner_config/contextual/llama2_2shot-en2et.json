@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "et",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Estonian Sentence: aastal Tartu Vanemuise kontserdisaalis toimunud autorikontserdi DVD - salvestis .\nFor the previous sentence, the words corresponding to 'Vanemuise concert hall in Tartu' is: 'Tartu Vanemuise kontserdisaalis'\nEstonian Sentence: Hiljem ehitati territooriumile Tallinnfilmi võttepaviljon , kus asus ka kostüümiladu ja prožektoripark .\nFor the previous sentence, the words corresponding to 'Tallinn Film' is: 'Tallinnfilmi'\n",
+    "prompt": "Estonian Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-et-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-et-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-et-translate/",
+    
+    "labels_in_sent": true    
+}

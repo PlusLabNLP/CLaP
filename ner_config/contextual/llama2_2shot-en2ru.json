@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "ru",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Russian Sentence: Поэтому , для защиты реактивных истребителей из команды Новотны при взлёте и посадке Вальтер Новотны начал использовать FW 190D из Jagdgeschwader 54 .\nFor the previous sentence, the words corresponding to 'Nowotny's team' is: 'команды Новотны'\nRussian Sentence: В 1961 — 1965 годах дирижировал балетами и в концертах в Австралии , Египте , Израиле и Новой Зеландии .\nFor the previous sentence, the words corresponding to 'New Zealand' is: 'Новой Зеландии'\n",
+    "prompt": "Russian Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-ru-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ru-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ru-translate/",
+    
+    "labels_in_sent": true    
+}

@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "sw",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Swahili Sentence: Msimbo wa posta ni 39208 .\nFor the previous sentence, the words corresponding to 'zip code' is: 'Msimbo wa posta'\nSwahili Sentence: Alimfuata Papa Gregori V akafuatwa na Papa Yohane XVII .\nFor the previous sentence, the words corresponding to 'Pope Gregory V' is: 'Papa Gregori V'\n",
+    "prompt": "Swahili Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-sw-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-sw-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-sw-translate/",
+    
+    "labels_in_sent": true    
+}

@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "ja",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Japanese Sentence: #ルノー、日産自動車に資本参加。\nFor the previous sentence, the words corresponding to 'Nissan Motors' is: '日産自動車'\nJapanese Sentence: 最初の奨学生は1699年に入学を許可され、そのひとりがアダム・スミスであった。\nFor the previous sentence, the words corresponding to 'Adam Smith' is: 'アダム・スミス'\n",
+    "prompt": "Japanese Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-ja-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ja-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ja-translate/",
+    
+    "labels_in_sent": true    
+}

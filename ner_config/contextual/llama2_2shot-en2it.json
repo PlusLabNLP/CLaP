@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "it",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Italian Sentence: Ospitò inoltre un granaio collegato con la cattedrale dell'Annunciazione .\nFor the previous sentence, the words corresponding to 'Cathedral of the Annunciation' is: 'cattedrale dell'Annunciazione'\nItalian Sentence: Pembina - città della Contea di Pembina , Dakota del Nord ( Stati Uniti d'America )\nFor the previous sentence, the words corresponding to 'North Dakota' is: 'Dakota del Nord'\n",
+    "prompt": "Italian Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-it-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-it-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-it-translate/",
+    
+    "labels_in_sent": true    
+}

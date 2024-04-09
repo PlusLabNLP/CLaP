@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "vi",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Vietnamese Sentence: Cả hai con của ông đều tốt nghiệp Học viện Âm nhạc Quốc gia Việt Nam .\nFor the previous sentence, the words corresponding to 'Vietnam National Academy of Music' is: 'Học viện Âm nhạc Quốc gia Việt Nam'\nVietnamese Sentence: Vua Gustaf V của Thụy Điển ( 1858 - 1950 )\nFor the previous sentence, the words corresponding to 'Gustaf V of Sweden' is: 'Gustaf V của Thụy Điển'\n",
+    "prompt": "Vietnamese Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-vi-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-vi-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-vi-translate/",
+    
+    "labels_in_sent": true    
+}

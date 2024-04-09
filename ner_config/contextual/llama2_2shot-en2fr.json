@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "fr",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "French Sentence: On le retrouve surtout en Espagne , au Portugal et en Tunisie .\nFor the previous sentence, the words corresponding to 'Spain' is: 'Espagne'\nFrench Sentence: Sélectionné à 58 reprises pour quatre buts inscrits en équipe nationale , il dispute avec celle - ci la Coupe du monde 1982 .\nFor the previous sentence, the words corresponding to 'national team' is: 'équipe nationale'\n",
+    "prompt": "French Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-fr-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-fr-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-fr-translate/",
+    
+    "labels_in_sent": true    
+}

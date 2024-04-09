@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "bn",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Bengali Sentence: অফিসিয়াল ওয়েবসাইট - বিশ্ববিদ্যালয় মঞ্জুরী কমিশন\nFor the previous sentence, the words corresponding to 'University Grants Commission' is: 'বিশ্ববিদ্যালয় মঞ্জুরী কমিশন'\nBengali Sentence: ভদ্রাচলমে একটি মন্দিরে রামের চিত্রকলা।\nFor the previous sentence, the words corresponding to 'Rama' is: 'রামের'\n",
+    "prompt": "Bengali Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-bn-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-bn-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-bn-translate/",
+    
+    "labels_in_sent": true    
+}

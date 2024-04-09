@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "eu",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Basque Sentence: Gaur egun Bigarren B mailan ari da jokatzen .\nFor the previous sentence, the words corresponding to 'Second B division' is: 'Bigarren B mailan'\nBasque Sentence: Hegaleko postuan jokatu zuen LEB Ligako CB Canarias taldean .\nFor the previous sentence, the words corresponding to 'LEB League' is: 'LEB Ligako'\n",
+    "prompt": "Basque Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-eu-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-eu-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-eu-translate/",
+    
+    "labels_in_sent": true    
+}

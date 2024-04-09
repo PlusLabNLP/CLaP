@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "ms",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Malay Sentence:Istilah ini juga digunakan dalam Bahasa Arab untuk nama Laut Mati , ' ' al - Bahr al - Mayyit ' ' .\nFor the previous sentence, the words corresponding to 'Dead Sea' is: 'Laut Mati'\nMalay Sentence: Destinasi dibawah merupakan destinasi untuk Penerbangan DiRaja Brunei .\nFor the previous sentence, the words corresponding to 'Royal Brunei Airlines' is: 'Penerbangan DiRaja Brunei'\n",
+    "prompt": "Malay Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-ms-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ms-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ms-translate/",
+    
+    "labels_in_sent": true    
+}

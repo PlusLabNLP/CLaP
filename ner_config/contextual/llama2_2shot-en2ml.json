@@ -1,0 +1,26 @@
+{
+    "seed": 0,
+
+    "src_lang": "en",
+    "tgt_lang": "ml",
+    "task": "ner",
+    "split": "train",
+    
+    "model": "meta-llama/Llama-2-13b-hf",
+    "n_gpu": 2,
+    "max_batch_size": 32,
+    "max_tokens": 100,
+    "temperature": 0.6,
+    "top_p": 0.9,
+
+    "icl": "Malayalam Sentence: യാത്രകൾക്കൊടുവിലെ ഇരുപതു വയസ്സ് തികഞ്ഞിട്ടില്ലായിരുന്ന അബലാർഡ് പാരിസിലിലെത്തി .\nFor the previous sentence, the words corresponding to 'Paris' is: 'പാരിസിലിലെത്തി'\nMalayalam Sentence: പാറമേക്കാവ് ഭഗവതിയും ആദ്യകാലങ്ങളിൽ ഈ ക്ഷേത്രത്തിൽ തന്നെയായിരുന്നു പ്രതിഷ്ഠിക്കപ്പെട്ടിരുന്നത് .\nFor the previous sentence, the words corresponding to 'Paramekkav Bhagavathy' is: 'പാറമേക്കാവ് ഭഗവതിയും'\n",
+    "prompt": "Malayalam Sentence: %s\nFor the previous sentence, the words corresponding to '%s' is: '",
+    
+    "save_orig_translations": true,
+    "load_orig_translations": false,
+    "translated_text_folder": "./data/translated_processed_data_ner/mmt-ml-translate/original_translations",
+    "translations_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ml-translate/original_translations/",
+    "tgt_folder": "./data/translated_processed_data_ner/llama2_2shot_contextual-ml-translate/",
+    
+    "labels_in_sent": true    
+}
