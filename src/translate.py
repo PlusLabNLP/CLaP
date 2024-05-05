@@ -67,7 +67,7 @@ def main():
     if config.task == "eae":
         
         # load data - adapt according to data format
-        src_train_data = load_data(xgear_config)
+        src_data = load_data(xgear_config)
         src_lang = config.src_lang
 
         # Create target folder
