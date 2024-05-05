@@ -1,5 +1,5 @@
 import json, _jsonnet
-from xgear.template_generate import event_template, eve_template_generator, IN_SEP, AND
+from xgear.models.XGear.template_generate import event_template, eve_template_generator, IN_SEP, AND
 from argparse import Namespace
 from tqdm import tqdm
 from copy import deepcopy
@@ -69,9 +69,13 @@ def load_xgear_config(config_fn):
 
 def load_EAE_data(file, config):
     
+    data = []
     with open(file, 'r', encoding='utf-8') as fp:
-        lines = fp.readlines()
-    data = [json.loads(line) for line in lines]
+        try:
+            data = json.load(fp)
+        except:
+            lines = fp.readlines()
+            data = [json.loads(line) for line in lines]
     
     instances = []
     for dt in data:

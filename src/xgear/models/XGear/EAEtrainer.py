@@ -12,7 +12,7 @@ from .EAEmodel import XGearEAEModel, XGearCopyEAEModel
 from .template_generate import event_template, eve_template_generator, IN_SEP, NO_ROLE, AND, TAGGER
 from .pattern import patterns
 from .utils import lang_map, get_span_idx, get_span_idxs_zh
-from scorer import compute_EAE_scores, print_scores
+from xgear.scorer import compute_EAE_scores, print_scores
 import ipdb
 
 logger = logging.getLogger(__name__)
