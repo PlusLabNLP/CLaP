@@ -67,22 +67,17 @@ def main():
     if config.task == "eae":
 
         # load data - adapt according to data format
-        src_train_data = load_data(xgear_config)
+        src_data = load_data(xgear_config)
         src_lang = config.src_lang
-
-        # Create target folder
-        if not os.path.exists(config.tgt_folder):
-            os.makedirs(config.tgt_folder)
 
         # load 3rd party translated data
         with open("%s/translated_%s.json" % (config.translated_text_folder, config.split), 'r') as f:
-            translated_text = json.load(f)[0]
+            translated_text = json.load(f)[0]       
 
-        print ("%s data..." % config.split)
-        processed_src, dataloaders = process_contextual_data_contextual(src_data, translated_text, src_lang, xgear_config, config.max_batch_size, config.src_lang, multiple_context=config.multiple_context)
+        processed_src, dataloader = process_contextual_data_contextual(src_data, translated_text, src_lang, xgear_config, config.max_batch_size, config.src_lang)
 
         translated_data = None
-        if config.load_orig_translations and os.path.exists("%s/translated_%s.json" % (config.translations_folder, split)):
+        if config.load_orig_translations and os.path.exists("%s/translated_%s.json" % (config.translations_folder, config.split)):
             with open("%s/translated_%s.json" % (config.translations_folder, config.split), 'r') as f:
                 translated_data = json.load(f)
         else:
@@ -91,8 +86,9 @@ def main():
             # Independently translate text, trigger and arguments
             translated_data = []
             translated_data.append(translated_text)
-            translated_data.append(model.contextual_translate(dataloaders[0]))         # Translate trigger
-            translated_data.append(model.contextual_translate(dataloaders[1]))         # Translate argument
+            translated_data.append(model.contextual_translate(dataloader))         # Translate trigger + arguments
+            translated_data.append(processed_src[2])
+            translated_data.append(processed_src[3])
 
             # Save original translations
             if config.save_orig_translations:
@@ -101,8 +97,12 @@ def main():
                 with open("%s/translated_%s.json" % (config.translations_folder, config.split), 'w') as f:
                     json.dump(translated_data, f, ensure_ascii=False)
 
+        # Create target folder
+        if not os.path.exists(config.tgt_folder):
+            os.makedirs(config.tgt_folder) 
+
         # Save data - adapt according to data format
-        create_data_and_save_contextual_eae(processed_src, translated_data, config, split=config.split)
+        create_data_and_save_eae(processed_src, translated_data, config)
     
     elif config.task == "ner":
 

@@ -77,8 +77,17 @@ def main():
         print ("%s data..." % config.split)
         processed_src, dataloaders = process_data_translate(src_data, src_lang, xgear_config, config.batch_size, config.src_lang)
 
+        # Save source data
+        if config.save_source:
+            if not os.path.exists(config.translations_folder):
+                os.makedirs(config.translations_folder)
+            with open("%s/source_%s.json" % (config.translations_folder, config.split), 'w') as f:
+                json.dump(processed_src, f)
+            with open("%s/source_%s_sentences.json" % (config.translations_folder, config.split), 'w') as f:
+                json.dump([ dt["text"] for dt in processed_src[0] ], f)
+
         translated_data = None
-        if config.load_orig_translations and os.path.exists("%s/translated_%s.json" % (config.translations_folder, split)):
+        if config.load_orig_translations and os.path.exists("%s/translated_%s.json" % (config.translations_folder, config.split)):
             with open("%s/translated_%s.json" % (config.translations_folder, config.split), 'r') as f:
                 translated_data = json.load(f)
         else:
@@ -88,8 +97,9 @@ def main():
             # Independently translate text, trigger and arguments
             translated_data = []
             translated_data.append(model.translate(dataloaders[0]))         # Translate text
-            translated_data.append(model.translate(dataloaders[1]))         # Translate trigger
-            translated_data.append(model.translate(dataloaders[2]))         # Translate argument
+            translated_data.append(model.translate(dataloaders[1]))         # Translate trigger + arguments
+            translated_data.append(processed_src[2])
+            translated_data.append(processed_src[3])
 
             # Save original translations
             if config.save_orig_translations:
@@ -99,7 +109,7 @@ def main():
                     json.dump(translated_data, f, ensure_ascii=False)
 
         # Save data - adapt according to data format
-        create_data_and_save_translate_eae(processed_src, translated_data, config, split=config.split)
+        create_data_and_save_translate_eae(processed_src, translated_data, config)
     
     elif config.task == "ner":
         

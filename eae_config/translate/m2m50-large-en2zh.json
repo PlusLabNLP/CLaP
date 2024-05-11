@@ -16,6 +16,6 @@
     "translations_folder": "./data/translated_processed_data_eae/mmt-zh-translate/original_translations/",
     "tgt_folder": "./data/translated_processed_data_eae/mmt-zh-translate/",
 
-    "labels_in_sent": false,
+    "only_ed": false,
     "save_source": true
 }
