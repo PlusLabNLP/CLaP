@@ -12,7 +12,7 @@ from .EAEmodel import XGearEAEModel, XGearCopyEAEModel
 from .template_generate import event_template, eve_template_generator, IN_SEP, NO_ROLE, AND, TAGGER
 from .pattern import patterns
 from .utils import lang_map, get_span_idx, get_span_idxs_zh
-from xgear.scorer import compute_EAE_scores, print_scores
+from src.xgear.scorer import compute_EAE_scores, print_scores
 import ipdb
 
 logger = logging.getLogger(__name__)
@@ -142,7 +142,7 @@ class XGearEAETrainer(BasicTrainer):
                     "role_type_stoi": role_type_stoi,
                     }
     
-    def process_data(self, data):
+    def process_data(self, data, lang=None):
         assert self.tokenizer, "Please load model and tokneizer before processing data!"
 
         n_total = 0
@@ -156,6 +156,7 @@ class XGearEAETrainer(BasicTrainer):
             assert len(event_training_data) == 1
             
             data_ = event_training_data[0]
+            dt['language'] = lang if lang is not None else dt['language']
 
             self.tokenizer.src_lang = lang_map[dt['language']]
             if len(self.tokenizer.tokenize(data_["seq_in"])) > self.config.max_length:
@@ -218,14 +219,7 @@ class XGearEAETrainer(BasicTrainer):
         if trans_data is not None:
             internal_trans_data = {}
             for lang in trans_data:
-                internal_trans_data[lang] = []
-                assert len(trans_data[lang]["train_input"]) == len(trans_data[lang]["train_output"])
-                for inp, out in zip(trans_data[lang]["train_input"], trans_data[lang]["train_output"]):
-                    internal_trans_data[lang].append({
-                        "input": inp,
-                        "target": out,
-                        "language": lang
-                    })
+                internal_trans_data[lang] = self.process_data(trans_data[lang], lang=lang)
                 if hasattr(self.config, "num_sample") and self.config.num_sample > 0:
                     final_trans_data.extend(random.sample(internal_trans_data[lang], self.config.num_sample))
                 else:

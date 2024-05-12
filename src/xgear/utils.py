@@ -289,9 +289,14 @@ def load_EAE_data(file, add_extra_info_fn, config, use_aux_info=False):
 
 def load_EAE_data_(file, add_extra_info_fn, config, use_aux_info=False):
 
-    with open(file, 'r', encoding='utf-8') as fp:
-        lines = fp.readlines()
-    data = [json.loads(line) for line in lines]
+    data = []
+    try:
+        with open(file, 'r', encoding='utf-8') as fp:
+            data = json.load(fp)
+    except:
+        with open(file, 'r', encoding='utf-8') as fp:
+            lines = fp.readlines()
+            data = [json.loads(line) for line in lines]
     
     instances = []
     for dt in data:
@@ -329,8 +334,8 @@ def load_EAE_data_(file, add_extra_info_fn, config, use_aux_info=False):
             instance = {"doc_id": dt["doc_id"], 
                         "wnd_id": dt["wnd_id"], 
                         "tokens": dt["tokens"], 
-                        "text": dt["sentence"], 
-                        "language": dt["language"],
+                        "text": dt["sentence"] if "sentence" in dt else dt["text"], 
+                        "language": dt["language"] if "language" in dt else "en",
                         "trigger": trigger, 
                         "arguments": arguments}
 
@@ -410,20 +415,8 @@ def load_trans_data(config):
     trans_data = {l:{} for l in trans_langs}
 
     for lang in config.trans_data:
-        if "train_file_all" in config.trans_data[lang]:
-            all_data = json.load(open(config.trans_data[lang]["train_file_all"], 'r'))
-            trans_data[lang]["train_input"] = [ dt["input"] for dt in all_data ]
-            trans_data[lang]["train_output"] = [ dt["target"] for dt in all_data ]
-        
-        elif "train_file_input" in config.trans_data[lang] and "train_file_output" in config.trans_data[lang]:
-            trans_data[lang]["train_input"] = load_text_file(config.trans_data[lang]["train_file_input"])
-            trans_data[lang]["train_output"] = load_text_file(config.trans_data[lang]["train_file_output"])
-            if "dev_file_input" in config.trans_data[lang]:
-                trans_data[lang]["dev_input"] = load_text_file(config.trans_data[lang]["dev_file_input"])
-                trans_data[lang]["dev_output"] = load_text_file(config.trans_data[lang]["dev_file_output"])
-            if "test_file_input" in config.trans_data[lang]:
-                trans_data[lang]["test_input"] = load_text_file(config.trans_data[lang]["test_file_input"])
-                trans_data[lang]["test_output"] = load_text_file(config.trans_data[lang]["test_file_output"])
+        trans_data[lang], _ = load_EAE_data(config.trans_data[lang], None, config, use_aux_info=False)
+        trans_data[lang] = [ dt for d in trans_data[lang] for dt in d ]
     
     return trans_data
 
