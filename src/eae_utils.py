@@ -32,10 +32,11 @@ def load_xgear_config(config_fn):
 def load_EAE_data(file, config):
     
     data = []
-    with open(file, 'r', encoding='utf-8') as fp:
-        try:
+    try:
+        with open(file, 'r', encoding='utf-8') as fp:
             data = json.load(fp)
-        except:
+    except:
+        with open(file, 'r', encoding='utf-8') as fp:
             lines = fp.readlines()
             data = [json.loads(line) for line in lines]
     
@@ -241,7 +242,7 @@ def create_data_and_save_eae(src_data, trans_data, config):
             "doc_id": dt["doc_id"] + "_%s" % config.tgt_lang,
             "wnd_id": dt["wnd_id"] + "_%s" % config.tgt_lang,
             "text": trans_text[i],
-            "tokens": trans_text[i].split(),
+            "tokens": trans_text[i].split() if not char_lang else list(trans_text[i]),
             "entity_mentions": [],
             "event_mentions": []
         }
