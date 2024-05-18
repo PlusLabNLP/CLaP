@@ -238,6 +238,10 @@ def create_data_and_save_eae(src_data, trans_data, config):
     char_lang = True if config.tgt_lang in ["zh", "chinese", "ja", "japanese"] else False
     num_ems_tgt, num_ems_src = 0, 0
     for i, dt in enumerate(src_data):
+
+        if char_lang:
+            trans_text[i] = trans_text[i].replace(" ", "")
+
         tgt_dt = {
             "doc_id": dt["doc_id"] + "_%s" % config.tgt_lang,
             "wnd_id": dt["wnd_id"] + "_%s" % config.tgt_lang,
@@ -247,6 +251,7 @@ def create_data_and_save_eae(src_data, trans_data, config):
             "event_mentions": []
         }
         args_in_text = 1
+        text2entity = {}
 
         assert len(dt["event_mentions"]) == len(src_num_entities[i]), (i, len(dt["event_mentions"]), len(src_num_entities[i]))
         for j, em in enumerate(dt["event_mentions"]):
@@ -293,15 +298,20 @@ def create_data_and_save_eae(src_data, trans_data, config):
                 }
 
                 a_s, a_e = get_span_idx(trans_text[i], entity_trans, trigger_span=(t_s, t_e), char_lang=char_lang)
-                if a_s != 1:
-                    entity = {
-                        "id": dt["doc_id"] + "_%s_%s" % (config.tgt_lang, "EN%d" % len(tgt_dt["entity_mentions"])),
-                        "start": a_s,
-                        "end": a_e,
-                        "text": trans_entities[entity_idx]
-                    }
-                    tgt_dt["entity_mentions"].append(entity)
-                    arg["entity_id"] = entity["id"]
+                if a_s != -1:
+                    if entity_trans in text2entity:
+                        arg["entity_id"] = text2entity[entity_trans]
+                    else:
+                        entity = {
+                            "id": dt["doc_id"] + "_%s_%s" % (config.tgt_lang, "EN%d" % len(tgt_dt["entity_mentions"])),
+                            "start": a_s,
+                            "end": a_e,
+                            "text": entity_trans
+                        }
+                        text2entity[entity_trans] = entity["id"]
+                        tgt_dt["entity_mentions"].append(entity)
+                        arg["entity_id"] = entity["id"]
+
                     tgt_em["arguments"].append(arg)
                 else:
                     args_in_text = 0
