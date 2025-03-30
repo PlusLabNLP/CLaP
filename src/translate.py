@@ -109,7 +109,7 @@ def main():
                     json.dump(translated_data, f, ensure_ascii=False)
 
         # Save data - adapt according to data format
-        create_data_and_save_translate_eae(processed_src, translated_data, config)
+        create_data_and_save_eae(processed_src, translated_data, config)
     
     elif config.task == "ner":
         
